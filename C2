@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+// Function to check balance
+void balanceEnquiry(float balance)
+{
+    printf("\nCurrent Balance = Rs. %.2f\n", balance);
+}
+
+// Function to withdraw money
+float withdraw(float balance)
+{
+    float amount;
+
+    printf("\nEnter amount to withdraw: ");
+    scanf("%f", &amount);
+
+    if(amount <= balance)
+    {
+        balance = balance - amount;
+        printf("Withdrawal Successful!\n");
+        printf("Remaining Balance = Rs. %.2f\n", balance);
+    }
+    else
+    {
+        printf("Insufficient Balance!\n");
+    }
+
+    return balance;
+}
+
+// Function to exit
+void exitBank()
+{
+    printf("\nThank You for Using Our Banking System!\n");
+}
+
+int main()
+{
+    int choice;
+    float balance = 5000;
+
+    while(1)
+    {
+        printf("\n====== BANKING SYSTEM ======\n");
+        printf("1. Balance Enquiry\n");
+        printf("2. Withdraw Money\n");
+        printf("3. Exit\n");
+
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1:
+                balanceEnquiry(balance);
+                break;
+
+            case 2:
+                balance = withdraw(balance);
+                break;
+
+            case 3:
+                exitBank();
+                return 0;
+
+            default:
+                printf("Invalid Choice!\n");
+        }
+    }
+
+    return 0;
